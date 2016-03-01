@@ -1,0 +1,29 @@
+input {
+	size: 15px;	
+}
+
+label {
+	font-family: Georgia;
+}
+
+select {
+	size: 15px;
+	
+}
+
+q {
+	font-family: Georgia;	
+	color: Red;
+	
+}
+
+#divostulantes {
+	width: 25%;
+	margin-left:25%;
+}
+
+	color: Red;
+.error {
+	
+	
+}
