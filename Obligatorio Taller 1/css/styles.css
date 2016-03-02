@@ -17,13 +17,23 @@ q {
 	
 }
 
-#divostulantes {
+#divpostulantes {
 	width: 25%;
-	margin-left:25%;
+	margin-left: 25%;
 }
 
 	color: Red;
 .error {
 	
 	
+}
+
+#divEmpresaCliente {
+	width: 25%;
+	margin-left: 25%;
+}
+
+#divVacante {
+	width: 25%;
+	margin-left: 25%;
 }
