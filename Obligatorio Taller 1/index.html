@@ -1,93 +1,195 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
-	<head>
-		<title>Reclutamiento de Personal</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="Keywords" content="reclutamiento, empresas, trabajo">
-		<meta name="Description" content="Gestión de cargos en clientes y postulantes candidatos.">
-		<meta name ="Copyright" content ="derechos reservados">
-		<meta name="Author" content="[159593 - Santiago Díaz - santidiaz.uy@gmail.com]">
-		
-		<link rel="stylesheet" type="text/css" href="css/styles.css" title="style" />
-		<script type="text/javascript" src="js/funciones.js"></script>
-	</head>
-	<body>
-        
-				
-				<div id=divostulantes>
-					<form action="#" method="post">
-						<fieldset>
-							<legend>Datos del Postulante</legend>
-							<table id="tbDatosPostulante">
-								<tr>
-									<td>
-										<label>Nombre: </label>									
-									</td>	
-									<td>									
-										<input id="idNombrePostulante" type="text">
-									</td>								
-								</tr>
-								<tr>
-									<td>
-										<label>Apellido: </label>																	
-									</td>
-									<td>
-										<input id="idApellidoPostulante" type="text">	
-									</td>								
-								</tr>
-								<tr>
-									<td>
-										<label>Teléfono: </label>																	
-									</td>
-									<td>
-										<input id="idTelefonoPostulante" type="text">	
-									</td>								
-								</tr>
-								<tr>
-									<td>
-										<label>Edad: </label>									
-									</td>
-									<td>
-										<select id="idEdadesPostulantes"></select>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<label>Sexo: </label>									
-									</td>
-									<td>
-										<input type="radio" name="rbtSexo"> Masculino
-									</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>
-										<input type="radio" name="rbtSexo"> Femenino					
-									</td>
-								</tr>								
-								<tr>
-									<td>
-										<label>Años de Experiencia: </label>									
-									</td>
-									<td>
-										<input type="text" id="idErrorAñosExp" maxlength="2">	
-									</td>								
-								</tr>
-								<tr id="trErrorAñosExp">
-									<td>									
-									</td>
-									<td>
-										<label id="lblIdError" class="error">Ingrese una cantidad valida</label>							
-									</td>									
-								</tr>
-							</table>				
-						</fieldset>					
-					</form>
-				</div>
-				
-				
-				
+<head>
+	<title>Reclutamiento de Personal</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="Keywords" content="reclutamiento, empresas, trabajo">
+	<meta name="Description" content="Gestión de cargos en clientes y postulantes candidatos.">
+	<meta name ="Copyright" content ="derechos reservados">
+	<meta name="Author" content="[159593 - Santiago Díaz - santidiaz.uy@gmail.com]">
+
+	<link rel="stylesheet" type="text/css" href="css/styles.css" title="style" />
+	<script type="text/javascript" src="js/funciones.js"></script>
+</head>
+<body>
+
+
+	<div id="divpostulantes">
+		<form action="#" method="post">
+			<fieldset>
+				<legend>Datos del Postulante</legend>
+				<table id="tbDatosPostulante">
+					<tr>
+						<td>
+							<label>Nombre: </label>									
+						</td>	
+						<td>									
+							<input id="idNombrePostulante" type="text">
+						</td>								
+					</tr>
+					<tr>
+						<td>
+							<label>Apellido: </label>																	
+						</td>
+						<td>
+							<input id="idApellidoPostulante" type="text">	
+						</td>								
+					</tr>
+					<tr>
+						<td>
+							<label>Teléfono: </label>																	
+						</td>
+						<td>
+							<input id="idTelefonoPostulante" type="text">	
+						</td>								
+					</tr>
+					<tr>
+						<td>
+							<label>Edad: </label>									
+						</td>
+						<td>
+							<select id="idEdadesPostulantes"></select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>Sexo: </label>									
+						</td>
+						<td>
+							<input type="radio" name="rbtSexo"> Masculino
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input type="radio" name="rbtSexo"> Femenino					
+						</td>
+					</tr>								
+					<tr>
+						<td>
+							<label>Años de Experiencia: </label>									
+						</td>
+						<td>
+							<input type="text" id="idErrorAñosExp" maxlength="2">	
+						</td>								
+					</tr>
+					<tr id="trErrorAñosExp">
+						<td>									
+						</td>
+						<td>
+							<label id="lblIdError" class="error">Ingrese una cantidad valida</label>							
+						</td>									
+					</tr>
+				</table>				
+			</fieldset>					
+		</form>
+	</div>
+
+	<div id="divEmpresaCliente">
+		<form action="#" method="post">
+			<fieldset>
+				<legend>Datos de Empresa Cliente</legend>
+				<table id="tbDatosEmpresaCliente">
+					<tr>
+						<td>
+							<label>Razón Social: </label>
+						</td>
+						<td>
+							<input type="text" id="idRazonSocialEmpresaCliente"></input>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>Dirección: </label>
+						</td>
+						<td>
+							<input type="text" id="idDireccionEmpresaCliente"></input>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>Teléfono: </label>
+						</td>
+						<td>
+							<input type="text" id="idTelefonoEmpresaCliente"></input>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+		</form>
+	</div>
+
+	<div id="divVacante">
+		<form action="#" method="post">
+			<fieldset>
+				<legend>Datos de la Vacante</legend>
+				<table id="tbVacante">
+					<tr>
+						<td>
+							<label>Empresa: </label>
+						</td>
+						<td>
+							<input type="text" id="idEmpresaCliente"></input>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>Rango de edad: </label>
+						</td>
+						<td>
+							<select id="idRangoEdad"></select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>Sexo: </label>
+						</td>
+						<td>
+							<input type="radio" id="idSexo">Masculino</input>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input type="radio" id="idSexo">Femenino</input>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input type="radio" id="idSexo">Indistinto</input>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>Experiencia Laboral: </label>
+						</td>
+						<td>
+							<input type="radio" id="idExperienciaLaboral">Obligatoria</input>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input type="radio" id="idExperienciaLaboral">Indistinta</input>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>Requiere conocimiento de inform&aacutetica: </label>
+						</td>
+						<td>
+							<input type="checkbox" id="idRequiereInformatica"></input>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+		</form>
+	</div>
+
+
+
 	
-	</body>
+</body>
 </html>
