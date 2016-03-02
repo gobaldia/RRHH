@@ -1,9 +1,7 @@
 window.onload = function() {	
-	
 	document.getElementById("idErrorAñosExp").onblur = validarAñosExp();
 	cargarArrayEdades();
 	cargarArrayRangoEdades();
-	
 }
 
 
