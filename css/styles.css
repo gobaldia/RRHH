@@ -1,0 +1,39 @@
+input {
+	size: 15px;	
+}
+
+label {
+	font-family: Georgia;
+}
+
+select {
+	size: 15px;
+	
+}
+
+q {
+	font-family: Georgia;	
+	color: Red;
+	
+}
+
+#divpostulantes {
+	width: 25%;
+	margin-left: 25%;
+}
+
+	color: Red;
+.error {
+	
+	
+}
+
+#divEmpresaCliente {
+	width: 25%;
+	margin-left: 25%;
+}
+
+#divVacante {
+	width: 25%;
+	margin-left: 25%;
+}
