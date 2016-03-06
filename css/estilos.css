@@ -10,15 +10,26 @@ select {
 	size: 15px;	
 }
 
-table {
-	width: 25%;	
+tr {
+	white-space: nowrap;	
 }
+
+table {
+	width: 30%;	
+}
+
 
 form {
 	height: 500px;	
 	width: 100%;
 }
-fieldset {
+legend {
+	font-family: Open Sans,Arial,sans-serif;
+	font-size:125%;
+	
+}
+fieldset {	
+	font-family: Open Sans,Arial,sans-serif;
 	height: 500px;
 	width: 108%;
 }
@@ -33,8 +44,10 @@ h3 {
 }
 
 .error {
-	color: Red;
-	
+	color: Red;	
+}
+.trAlignRight {
+	text-align: right;
 }
 
 body {
@@ -60,18 +73,18 @@ body {
 }
 
 #divEmpresaCliente {
-	width: 25%;
-	margin-left: 25%;
+	width: 100%;
+	height: 500px;
 }
 
 #divVacante {
-	width: 25%;
-	margin-left: 25%;
+	width: 100%;
+	height: 500px;
 }
 
 #divPortada {	
 	background-image: url(../img/imgPortada.jpg);
-	background-repeat: no-repeat;
+	background-repeat: round;
 	background-size: 100%;
 	height: 300px;
 	width: 100%;
@@ -80,28 +93,37 @@ body {
 }
 
 #divPie {    
-	background-color:black;
+	/*background-color:black;*/
     color:white;
     clear:both;
     text-align:center;
 	padding:5px;	
+	
+	
+	background-image: url(../img/footer.jpg);
+	background-repeat: round;
+	background-size: 100%;
 }
 #divMenu {
     line-height:30px;
     background-color:#eeeeee;
-    height: 555px;
+    height:570px;
     width:20%;	
     float:left;	
 	font-family: Verdana, Helvetica, Arial, sans-serif;	
 }
 #divMenu ul{
-	list-style: none;	
+	margin-top: 20px;
+	margin-left: 20px;	
 }
 #divMenu li {
   margin-top: 10px;
 }
 #divMenu a {
   font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+#divMenu img {
+	width:100%;
 }
 #divMenu a:hover {
 	font-size: 125%;
@@ -115,3 +137,11 @@ body {
 	padding-left:30px;
 }
 
+#divPrincipal h1 {
+	text-align: center;
+}
+#divPrincipal img {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
