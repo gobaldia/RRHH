@@ -9,68 +9,78 @@
 	<meta name ="Copyright" content ="derechos reservados">
 	<meta name="Author" content="[159593 - Santiago Díaz - santidiaz.uy@gmail.com], [197321 - Gabriel Obaldía - gobaldia@gmail.com]">
 
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/estilos.css" title="style" />
-	<script type="text/javascript" src="js/scripts.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/funciones.js"></script>	
+	
 		
 	
 </head>
 <body>
 
-	<div id="divPortada" class="image">
+
+
+
+
+	<div id="divPortada">
 		<p>RRHH</p>
 	</div>
 
 	<div id="divMenu">
+		<img src="img/menuImg.jpg" >
 		<ul>
-		   <li class='active'>
-				<a href='#'>
+		   <li>
+				<a href="#" id="vista_1" value="1">
 					<span>Principal</span>
 				</a>
 			</li>
 			<li>
-				<a href='#'>
+				<a href="#" id="vista_2" value="2">
 					<span>Registro de postulante</span>
 				</a>
 			</li>
 			<li>
-				<a href='#'>
+				<a href="#" id="vista_3">
 					<span>Registro de empresa cliente</span>
 				</a>
 			</li>
 			<li>
-				<a href='#'>
+				<a href="#" id="vista_4">
 					<span>Registro de vacante</span>
 				</a>
 			</li>
 			<li>
-				<a href='#'>
+				<a href="#" id="vista_5">
 					<span>Consulta de posibles postulantes</span>
 				</a>
 			</li>
 			<li>
-				<a href='#'>
+				<a href="#" id="vista_6">
 					<span>Requerimientos más pedidos</span>
 				</a>
 			</li>
 			<li>
-				<a href='#'>
+				<a href="#" id="vista_7">
 					<span>Postulantes que no califican</span>
 				</a>
 			</li>
 		</ul>
 	</div>
 
-	<div id="divContenido">	
+	<div id="divContenido">
+		<div id="divPrincipal">
+			<h1>Página en construcción...</h1>
+			<img src="img/enConstruccion.png" alt="En contrucción" >
+		</div>
 		
-		
+	
 		<div id="divpostulantes">
 			<form action="#" method="post">
 				<fieldset>
 					<legend>Datos del Postulante</legend>
 					<table id="tbDatosPostulante">
 						<tr>
-							<td>
+							<td class="trAlignRight">
 								<label>Nombre: </label>									
 							</td>	
 							<td>									
@@ -78,7 +88,7 @@
 							</td>								
 						</tr>
 						<tr>
-							<td>
+							<td class="trAlignRight">
 								<label>Apellido: </label>																	
 							</td>
 							<td>
@@ -86,7 +96,7 @@
 							</td>								
 						</tr>
 						<tr>
-							<td>
+							<td class="trAlignRight">
 								<label>Teléfono: </label>																	
 							</td>
 							<td>
@@ -94,7 +104,7 @@
 							</td>								
 						</tr>
 						<tr>
-							<td>
+							<td class="trAlignRight">
 								<label>Edad: </label>									
 							</td>
 							<td>
@@ -102,7 +112,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
+							<td class="trAlignRight">
 								<label>Sexo: </label>									
 							</td>
 							<td>
@@ -116,7 +126,7 @@
 							</td>
 						</tr>								
 						<tr>
-							<td>
+							<td class="trAlignRight">
 								<label>Años de Experiencia: </label>									
 							</td>
 							<td>
@@ -127,7 +137,7 @@
 							<td>									
 							</td>
 							<td>
-								<label id="lblIdError" class="error">Ingrese una cantidad valida</label>							
+								<label id="lblIdError" class="error">* Ingrese una cantidad valida.</label>							
 							</td>									
 						</tr>
 					</table>				
@@ -238,13 +248,11 @@
 		</div>
 		
 		
-		
-		
 	</div>
 
 	<div id="divPie">
 		<h3>Contactenos</h3>
 	</div>
-	
+
 	</body>
 </html>
