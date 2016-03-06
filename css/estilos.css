@@ -3,29 +3,60 @@ input {
 }
 
 label {
-	font-family: Georgia;
+	font-family: Open Sans,Arial,sans-serif;
 }
 
 select {
-	size: 15px;
-	
+	size: 15px;	
+}
+
+table {
+	width: 25%;	
+}
+
+form {
+	height: 500px;	
+	width: 100%;
+}
+fieldset {
+	height: 500px;
+	width: 108%;
 }
 
 q {
-	font-family: Georgia;	
+	font-family: Open Sans,Arial,sans-serif;
 	color: Red;
-	
 }
 
-#divpostulantes {
-	width: 25%;
-	margin-left: 25%;
+h3 {
+	font-family: Open Sans,Arial,sans-serif;	
 }
 
-	color: Red;
 .error {
+	color: Red;
 	
+}
+
+body {
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+}
+
+#divPortada p {
+	font-family: Open Sans,Arial,sans-serif;	
+	padding-top: 6%;
+	padding-left: 80%;
+	float: left;
+	color: white;
+	font-size: 400%;	
 	
+	text-shadow: 2px 4px 3px rgba(0,0,0,0.3);	
+}
+
+#idformPostulante {
+	width: 100%;
+	height: 500px;
 }
 
 #divEmpresaCliente {
@@ -37,3 +68,50 @@ q {
 	width: 25%;
 	margin-left: 25%;
 }
+
+#divPortada {	
+	background-image: url(../img/imgPortada.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	height: 300px;
+	width: 100%;
+	float:left;
+    text-align:center;    
+}
+
+#divPie {    
+	background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+	padding:5px;	
+}
+#divMenu {
+    line-height:30px;
+    background-color:#eeeeee;
+    height: 555px;
+    width:20%;	
+    float:left;	
+	font-family: Verdana, Helvetica, Arial, sans-serif;	
+}
+#divMenu ul{
+	list-style: none;	
+}
+#divMenu li {
+  margin-top: 10px;
+}
+#divMenu a {
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+#divMenu a:hover {
+	font-size: 125%;
+}
+
+#divContenido {
+	width:70%;
+    float:left;
+    padding-top:20px;
+	padding-bottom:40px;
+	padding-left:30px;
+}
+
