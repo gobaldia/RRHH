@@ -1,57 +1,105 @@
-window.onload = function() {	
-	document.getElementById("idErrorAñosExp").onblur = validarAñosExp();
+$(document).ready(inicio);
+
+function inicio(){
+	$("#divPrincipal").show();
+	$("#divpostulantes").hide();
+	$("#divEmpresaCliente").hide();
+	$("#divVacante").hide();
+	$("#trErrorAñosExp").hide();
+	
+	$("#idErrorAñosExp").blur(validarAñosExp);
+	
+	$("#divMenu ul li a").click(cambiarForm);
+	
 	cargarArrayEdades();
 	cargarArrayRangoEdades();
 }
 
+function cambiarForm(){
+	var vista = $(this).attr('id');
+	
+	switch(vista){
+		case "vista_1":
+			$("#divPrincipal").show();
+			$("#divpostulantes").hide();
+			$("#divEmpresaCliente").hide();
+			$("#divVacante").hide();
+			break;
+		case "vista_2":
+			$("#divPrincipal").hide();
+			$("#divpostulantes").show();
+			$("#divEmpresaCliente").hide();
+			$("#divVacante").hide();
+			break;
+		case "vista_3":
+			$("#divPrincipal").hide();
+			$("#divpostulantes").hide();
+			$("#divEmpresaCliente").show();
+			$("#divVacante").hide();
+			break;
+		case "vista_4":
+			$("#divPrincipal").hide();
+			$("#divpostulantes").hide();
+			$("#divEmpresaCliente").hide();
+			$("#divVacante").show();
+			break;
+		case "vista_5":			
+			break;
+		case "vista_6":			
+			break;
+		default:
+			break;
+	}
+}
+
 
 function validarAñosExp(){
-	var añosIngresados = document.getElementById("trErrorAñosExp");
-	if(!isNaN(añosIngresados.value)){
-		trErrorAñosExp.visibility = true;		
-	} else if(añosIngresados.value < 0 || añosIngresados.value > 70){		
-		trErrorAñosExp.visibility = true;		
+	var añosIngresados = $("#idErrorAñosExp");
+	if(isNaN(añosIngresados.val())){
+		$("#trErrorAñosExp").show();
+	} else if(parseInt(añosIngresados.val()) < 0 || parseInt(añosIngresados.val()) > 70){		
+		$("#trErrorAñosExp").show();		
 	} else {
-		trErrorAñosExp.visibility = false;
+		$("#trErrorAñosExp").hide();
 	}
 }
 
 function cargarArrayEdades(){
-	var comboEdades = document.getElementById("idEdadesPostulantes");
+	var comboEdades = $("#idEdadesPostulantes");
 	
 	for(var i=17; i<100; i++){
 		var options = document.createElement("option");
 		
 		if(i == 17){
 			options.value = "";
-			options.text = "Seleccione una edad...";
-			comboEdades.appendChild(options);
+			options.text = "Seleccione una edad...";	
+			comboEdades.append(options);
 		} else {
 			options.value = i;			
 			options.text = i;	
-			comboEdades.appendChild(options);			
+			comboEdades.append(options);			
 		}
 	}
 }
 
 function cargarArrayRangoEdades() {
-	var comboRangoEdades = document.getElementById("idRangoEdad");
+	var comboRangoEdades = $("#idRangoEdad");
 
-	for (var i = 15; i <= 100; i+=5) {
+	for (var i = 15; i < 100; i+=5) {
 		var options = document.createElement("option");
 
 		if (i == 15) {
 			options.value = "";
 			options.text = "Seleccione un rango de edad...";
-			comboRangoEdades.appendChild(options);
+			comboRangoEdades.append(options);
 		} else if (i == 20) {
 			options.value = "Menor a 20";
 			options.text = "Menor a 20";
-			comboRangoEdades.appendChild(options);
+			comboRangoEdades.append(options);
 		} else {
-			options.value = i-5 + " a " + (i-1);
-			options.text = i-5 + " a " + (i-1);
-			comboRangoEdades.appendChild(options);
+			options.value = i-5 + " a " + i;
+			options.text = i-5 + " a " + i;
+			comboRangoEdades.append(options);
 		}
 	}
 }
