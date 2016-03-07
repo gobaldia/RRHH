@@ -1,26 +1,50 @@
-input {
-	size: 15px;	
+input[type="text"] {
+	width: 300px;
+	height: 30px;
+	padding-left: 5px;
+}
+
+input[type="button"] {
+	
+	width: 200px;
+	height: 40px;
+	margin-left:40px;
+	font-size: 125%;
+	font-family: Open Sans,Arial,sans-serif;
+}
+
+em {
+	padding-left: 5px;
+	color: gray;
+	font-family: Open Sans,Arial,sans-serif;
 }
 
 label {
 	font-family: Open Sans,Arial,sans-serif;
+	font-size: 110%;
 }
 
 select {
-	size: 15px;	
+	width: 250px;
+	height: 30px;
+	padding-left: 5px;	
 }
 
 tr {
 	white-space: nowrap;	
 }
 
+td {
+	padding: 10px;
+	
+}
 table {
 	width: 30%;	
 }
 
 
 form {
-	height: 500px;	
+	height: 100%;
 	width: 100%;
 }
 legend {
@@ -30,7 +54,7 @@ legend {
 }
 fieldset {	
 	font-family: Open Sans,Arial,sans-serif;
-	height: 500px;
+	height: 625px;
 	width: 108%;
 }
 
@@ -41,6 +65,17 @@ q {
 
 h3 {
 	font-family: Open Sans,Arial,sans-serif;	
+}
+
+button {
+	border-radius: 5px;
+	background-color: #3385ff;
+	color: white;
+	font-weight: bold;
+}
+input {
+	size: 15px;
+	border-radius: 5px;
 }
 
 .error {
@@ -56,9 +91,14 @@ body {
 	border-width: 1px;
 }
 
+divMenu span {
+	padding-top: 3%;
+	padding-left: 3%;
+}
+
 #divPortada p {
 	font-family: Open Sans,Arial,sans-serif;	
-	padding-top: 6%;
+	padding-top: 4%;
 	padding-left: 80%;
 	float: left;
 	color: white;
@@ -77,6 +117,8 @@ body {
 	height: 500px;
 }
 
+
+
 #divVacante {
 	width: 100%;
 	height: 500px;
@@ -85,11 +127,20 @@ body {
 #divPortada {	
 	background-image: url(../img/imgPortada.jpg);
 	background-repeat: round;
-	background-size: 100%;
-	height: 300px;
-	width: 100%;
-	float:left;
+	background-size: 100% 100%;	
+	height: 250px;
+	width: 80%;
+	float:right;
     text-align:center;    
+}
+
+#divExito h1 {
+	font-size: 130%;
+	font-family: Open Sans,Arial,sans-serif;
+	margin-top: 10%;
+	margin-left: 10%;
+	color: green;
+	
 }
 
 #divPie {    
@@ -97,9 +148,7 @@ body {
     color:white;
     clear:both;
     text-align:center;
-	padding:5px;	
-	
-	
+	padding:5px;
 	background-image: url(../img/footer.jpg);
 	background-repeat: round;
 	background-size: 100%;
@@ -107,7 +156,7 @@ body {
 #divMenu {
     line-height:30px;
     background-color:#eeeeee;
-    height:570px;
+    height:950px;
     width:20%;	
     float:left;	
 	font-family: Verdana, Helvetica, Arial, sans-serif;	
@@ -128,15 +177,13 @@ body {
 #divMenu a:hover {
 	font-size: 125%;
 }
-
 #divContenido {
 	width:70%;
     float:left;
     padding-top:20px;
-	padding-bottom:40px;
+	padding-bottom:30px;
 	padding-left:30px;
 }
-
 #divPrincipal h1 {
 	text-align: center;
 }
