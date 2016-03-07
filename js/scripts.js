@@ -5,18 +5,19 @@ function inicio(){
 	$("#divpostulantes").hide();
 	$("#divEmpresaCliente").hide();
 	$("#divVacante").hide();
-	$("#trErrorAñosExp").hide();
+	$("#divExito").hide();
 	
-	$("#idErrorAñosExp").blur(validarAñosExp);
-	
+	$("#idBtnRegistrarPostulante").click(registrarPostulante);
 	$("#divMenu ul li a").click(cambiarForm);
 	
 	cargarArrayEdades();
 	cargarArrayRangoEdades();
 }
 
+/*=== NAVEGACION ===*/
 function cambiarForm(){
 	var vista = $(this).attr('id');
+	$("#divExito").hide();
 	
 	switch(vista){
 		case "vista_1":
@@ -52,16 +53,119 @@ function cambiarForm(){
 	}
 }
 
+/*============================*/
+
+
+
+/*==== PROPIEDADES ARRAYS ====*/
+var arrayPostulantes = []; 
+
+
+/*============================*/
+
+
+
+/*==== REGISTRO POSTULANTE ====*/
+function registrarPostulante(){	
+	if(validarNombreyApellido() && validarTelefono() && validarComboEdad() && validarAñosExp()){
+		var postulante = { 
+			nombre: $("#idNombrePostulante").val(),
+			apellido : $("#idApellidoPostulante").val(),
+			tel: $("#idTelefonoPostulante").val(),
+			edad: $("#idEdadesPostulantes").val(),
+			sexo: "",
+			exp: parseInt($("#idAñosExp").val())
+		};
+		
+		if($("#rbtM").is(":checked")){
+			postulante.sexo = "M";
+		} else {
+			postulante.sexo = "F";
+		} 
+		
+		$("#divpostulantes").hide();
+		$("#divExito").show();
+		$("#divExito h1").text("Registro de postulante realizado correctamente. Gracias!");
+		clearFormPostulante();
+	} 
+}
+
+function validarComboEdad(){
+	var retorno = true;
+	if($("#idEdadesPostulantes").val() == 0){
+		retorno = false;
+		alert("* Debe seleccionar edad.");
+	}	
+	return retorno;
+}
+
+function validarTelefono(){
+	var telefonoIngresado = $("#idTelefonoPostulante");
+	var retorno = true;
+	
+	if (!telefonoIngresado.val()){
+		retorno = false;
+		alert("* Debe ingresar un teléfono. ");	
+	} else if(isNaN(telefonoIngresado.val())){
+		retorno = false;
+		alert("* Teléfono inválidos. ");
+	} else if(telefonoIngresado.length < 4 || telefonoIngresado.length > 9){
+		retorno = false;
+		alert("* Teléfono inválidos. Largo entre 4 y 9 caracteres.");
+	} else if(arrayPostulantes.length > 0) {
+		
+		for(var i = 0; i < arrayPostulantes.length; i++){
+			if(arrayPostulantes[i].tel == $(telefonoIngresado).val()){
+				alert("* Ya existe postulante con el mismo número de teléfono. ");
+				return false;
+			}
+		}
+	} 
+	
+	return retorno;
+}
+
+function validarNombreyApellido(){	
+	var nombreIngresado = $("#idNombrePostulante");
+	var retorno = true;
+	
+	if (!nombreIngresado.val()){
+		retorno = false;
+		alert("* Debe ingresar un nombre. ");	
+	} else if(!isNaN(nombreIngresado.val())){
+		retorno = false;
+		alert("* Nombre inválido. ");
+	} else {
+		var apellidoIngresado = $("#idApellidoPostulante");
+		
+		if (!apellidoIngresado.val()){
+			retorno = false;
+			alert("* Debe ingresar un apellido. ");
+		} else if(!isNaN(apellidoIngresado.val())){
+			retorno = false;
+			alert("* Apellido inválido. ");
+		}
+	}
+	
+	return retorno;
+}
 
 function validarAñosExp(){
-	var añosIngresados = $("#idErrorAñosExp");
-	if(isNaN(añosIngresados.val())){
-		$("#trErrorAñosExp").show();
-	} else if(parseInt(añosIngresados.val()) < 0 || parseInt(añosIngresados.val()) > 70){		
-		$("#trErrorAñosExp").show();		
-	} else {
-		$("#trErrorAñosExp").hide();
-	}
+	var añosIngresados = $("#idAñosExp");
+	var retorno = true;
+	
+	if (!añosIngresados.val()){
+		retorno = false;
+		alert("* Debe ingresar años de experiencia. ");	
+	} else if(isNaN(añosIngresados.val())){
+		retorno = false;
+		alert("* Años de experiencia inválidos. ");
+	} else if(parseInt(añosIngresados.val()) < 0 || parseInt(añosIngresados.val()) > 70){
+		retorno = false;		
+		alert("* Años de experiencia inválidos. ");	
+	} 
+	
+	return retorno;
 }
 
 function cargarArrayEdades(){
@@ -71,7 +175,7 @@ function cargarArrayEdades(){
 		var options = document.createElement("option");
 		
 		if(i == 17){
-			options.value = "";
+			options.value = 0;
 			options.text = "Seleccione una edad...";	
 			comboEdades.append(options);
 		} else {
@@ -103,3 +207,18 @@ function cargarArrayRangoEdades() {
 		}
 	}
 }
+
+function clearFormPostulante() {
+	$("input[type=text]").each(function() {
+        $(this).val("");
+    });
+	$("#idEdadesPostulantes").val("0");
+	$("#rbtM").click();
+}
+/*=============================*/
+
+
+
+
+
+
