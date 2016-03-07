@@ -11,7 +11,7 @@
 
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/estilos.css" title="style" />
-	<script type="text/javascript" src="js/funciones.js"></script>	
+	<script type="text/javascript" src="js/scripts.js"></script>	
 	
 		
 	
@@ -73,7 +73,10 @@
 			<img src="img/enConstruccion.png" alt="En contrucción" >
 		</div>
 		
-	
+		<div id="divExito">
+			<h1></h1>
+		</div>
+	    
 		<div id="divpostulantes">
 			<form action="#" method="post">
 				<fieldset>
@@ -84,7 +87,7 @@
 								<label>Nombre: </label>									
 							</td>	
 							<td>									
-								<input id="idNombrePostulante" type="text">
+								<input id="idNombrePostulante" placeholder="Ingrese nombre..." maxlength="15" type="text">
 							</td>								
 						</tr>
 						<tr>
@@ -92,7 +95,7 @@
 								<label>Apellido: </label>																	
 							</td>
 							<td>
-								<input id="idApellidoPostulante" type="text">	
+								<input id="idApellidoPostulante" placeholder="Ingrese apellido..." maxlength="15" type="text">	
 							</td>								
 						</tr>
 						<tr>
@@ -100,7 +103,7 @@
 								<label>Teléfono: </label>																	
 							</td>
 							<td>
-								<input id="idTelefonoPostulante" type="text">	
+								<input id="idTelefonoPostulante" placeholder="Ingrese teléfono..." maxlength="15" type="text">	
 							</td>								
 						</tr>
 						<tr>
@@ -116,31 +119,37 @@
 								<label>Sexo: </label>									
 							</td>
 							<td>
-								<input type="radio" name="rbtSexo"> Masculino
+								<input type="radio" name="rbtSexo" id="rbtM" checked="checked"> Masculino
 							</td>
 						</tr>
 						<tr>
 							<td></td>
 							<td>
-								<input type="radio" name="rbtSexo"> Femenino					
+								<input type="radio" name="rbtSexo" > Femenino					
 							</td>
 						</tr>								
-						<tr>
+						<tr>	
 							<td class="trAlignRight">
 								<label>Años de Experiencia: </label>									
 							</td>
 							<td>
-								<input type="text" id="idErrorAñosExp" maxlength="2">	
+								<input type="text" id="idAñosExp" placeholder="Ingrese años exp..." maxlength="2"><em>(Si busca su primer trabajo ingrese 0 en este campo.)</emp>
 							</td>								
 						</tr>
-						<tr id="trErrorAñosExp">
+						<tr>
 							<td>									
 							</td>
 							<td>
-								<label id="lblIdError" class="error">* Ingrese una cantidad valida.</label>							
-							</td>									
+							</td>
 						</tr>
-					</table>				
+						<tr>
+							<td>									
+							</td>
+							<td>
+								<input type="button" id="idBtnRegistrarPostulante" value="Registrar">
+							</td>
+						</tr>
+					</table>
 				</fieldset>					
 			</form>
 		</div>
@@ -247,12 +256,41 @@
 			</form>
 		</div>
 		
-		
 	</div>
 
 	<div id="divPie">
 		<h3>Contactenos</h3>
 	</div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
 	</body>
 </html>
