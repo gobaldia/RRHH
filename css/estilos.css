@@ -1,48 +1,41 @@
+
+/*==============HTML TAGS================*/
 input[type="text"] {
 	width: 300px;
 	height: 30px;
 	padding-left: 5px;
 }
-
 input[type="button"] {
-	
 	width: 200px;
 	height: 40px;
 	margin-left:40px;
 	font-size: 125%;
 	font-family: Open Sans,Arial,sans-serif;
 }
-
 em {
 	padding-left: 5px;
 	color: gray;
 	font-family: Open Sans,Arial,sans-serif;
 }
-
 label {
 	font-family: Open Sans,Arial,sans-serif;
 	font-size: 110%;
 }
-
 select {
 	width: 250px;
 	height: 30px;
 	padding-left: 5px;	
 }
-
 tr {
 	white-space: nowrap;	
 }
-
 td {
 	padding: 10px;
 	
 }
 table {
-	width: 30%;	
+	width: 100%;	
 }
-
-
 form {
 	height: 100%;
 	width: 100%;
@@ -54,19 +47,16 @@ legend {
 }
 fieldset {	
 	font-family: Open Sans,Arial,sans-serif;
-	height: 625px;
+	height: 710px;
 	width: 108%;
 }
-
 q {
 	font-family: Open Sans,Arial,sans-serif;
 	color: Red;
 }
-
 h3 {
 	font-family: Open Sans,Arial,sans-serif;	
 }
-
 button {
 	border-radius: 5px;
 	background-color: #3385ff;
@@ -77,25 +67,38 @@ input {
 	size: 15px;
 	border-radius: 5px;
 }
+body {
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+}
+/*=========================================*/
 
+
+
+/*================ CLASES ==============*/
 .error {
 	color: Red;	
 }
 .trAlignRight {
 	text-align: right;
 }
-
-body {
-	border-color: black;
-	border-style: solid;
-	border-width: 1px;
+.trAlignRightTop {
+	text-align: right;
+	vertical-align: text-top;
 }
 
-divMenu span {
-	padding-top: 3%;
-	padding-left: 3%;
+.alignLeft {
+	text-align: left;
 }
+/*=========================================*/
 
+
+
+
+
+
+/*======= PORTADA =======*/
 #divPortada p {
 	font-family: Open Sans,Arial,sans-serif;	
 	padding-top: 4%;
@@ -106,64 +109,29 @@ divMenu span {
 	
 	text-shadow: 2px 4px 3px rgba(0,0,0,0.3);	
 }
-
-#idformPostulante {
-	width: 100%;
-	height: 500px;
-}
-
-#divEmpresaCliente {
-	width: 100%;
-	height: 500px;
-}
-
-
-
-#divVacante {
-	width: 100%;
-	height: 500px;
-}
-
 #divPortada {	
 	background-image: url(../img/imgPortada.jpg);
 	background-repeat: round;
 	background-size: 100% 100%;	
-	height: 250px;
+	height: 200px;
 	width: 80%;
 	float:right;
     text-align:center;    
 }
+/*=====================*/
 
-#divExito h1 {
-	font-size: 130%;
-	font-family: Open Sans,Arial,sans-serif;
-	margin-top: 10%;
-	margin-left: 10%;
-	color: green;
-	
-}
-
-#divPie {    
-	/*background-color:black;*/
-    color:white;
-    clear:both;
-    text-align:center;
-	padding:5px;
-	background-image: url(../img/footer.jpg);
-	background-repeat: round;
-	background-size: 100%;
-}
+/*====== MENU ==========*/
 #divMenu {
     line-height:30px;
     background-color:#eeeeee;
-    height:950px;
+    height:1000px;
     width:20%;	
     float:left;	
 	font-family: Verdana, Helvetica, Arial, sans-serif;	
 }
 #divMenu ul{
 	margin-top: 20px;
-	margin-left: 20px;	
+	margin-left: 0px;	
 }
 #divMenu li {
   margin-top: 10px;
@@ -173,10 +141,19 @@ divMenu span {
 }
 #divMenu img {
 	width:100%;
+	height: 90px;
 }
 #divMenu a:hover {
 	font-size: 125%;
 }
+#divMenu span {
+	padding-top: 3%;
+	padding-left: 3%;
+}
+/*========================*/
+
+
+
 #divContenido {
 	width:70%;
     float:left;
@@ -192,3 +169,34 @@ divMenu span {
     margin-left: auto;
     margin-right: auto;
 }
+#divPie {    
+    color:white;
+    clear:both;
+    text-align:center;
+	padding:5px;
+	background-image: url(../img/footer.jpg);
+	background-repeat: round;
+	background-size: 100%;
+}
+
+
+
+
+#idformPostulante {
+	width: 100%;
+	height: 500px;
+}
+#divEmpresaCliente {
+	width: 100%;
+	height: 500px;
+}
+#divVacante {
+	width: 100%;
+	height: 500px;
+}
+#idBtnRegistrarPostulante {
+	position: absolute;
+	right 3%;
+	
+}
+
