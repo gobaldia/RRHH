@@ -6,15 +6,18 @@ function inicio(){
 	$("#divEmpresaCliente").hide();
 	$("#divVacante").hide();
 	$("#divExito").hide();
+	$("#idTrTiposProgramasInfo").hide();
 	
 	$("#idBtnRegistrarPostulante").click(registrarPostulante);
 	$("#divMenu ul li a").click(cambiarForm);
+	$("#idRbtSi").click(programasInformaticos);
+	$("#idRbtNo").click(programasInformaticos);
 	
 	cargarArrayEdades();
 	cargarArrayRangoEdades();
 }
 
-/*=== NAVEGACION ===*/
+/*============ NAVEGACION =================*/
 function cambiarForm(){
 	var vista = $(this).attr('id');
 	$("#divExito").hide();
@@ -31,6 +34,7 @@ function cambiarForm(){
 			$("#divpostulantes").show();
 			$("#divEmpresaCliente").hide();
 			$("#divVacante").hide();
+			$("#idTrTiposProgramasInfo").hide();
 			break;
 		case "vista_3":
 			$("#divPrincipal").hide();
@@ -52,8 +56,7 @@ function cambiarForm(){
 			break;
 	}
 }
-
-/*============================*/
+/*==============================================*/
 
 
 
@@ -67,26 +70,76 @@ var arrayPostulantes = [];
 
 /*==== REGISTRO POSTULANTE ====*/
 function registrarPostulante(){	
+
+	//Valido que el usuario allá completado nombre, apellido, teléfono, edad y añosExp correctos, sino no lo dejo seguir.
 	if(validarNombreyApellido() && validarTelefono() && validarComboEdad() && validarAñosExp()){
-		var postulante = { 
-			nombre: $("#idNombrePostulante").val(),
-			apellido : $("#idApellidoPostulante").val(),
-			tel: $("#idTelefonoPostulante").val(),
-			edad: $("#idEdadesPostulantes").val(),
-			sexo: "",
-			exp: parseInt($("#idAñosExp").val())
-		};
 		
-		if($("#rbtM").is(":checked")){
-			postulante.sexo = "M";
+		//Si tiene conocimientos informáticos, voy a desplegar los tipos de programas y validar que seleccione al menos 1.
+		if($("#idRbtSi").is(":checked")){
+			var hasChecked = false;
+			
+			//Recorro los inputs de tipo checkbox que están dentro del divPostulante para validar que al menos 1 este chequeado.
+			$( "#divpostulantes input[type='checkbox']" ).each(function() {
+			     if(!hasChecked){
+					hasChecked = $(this).is(":checked");
+				 }
+			});
+			
+			if(hasChecked){//Si tiene chequeados, genero el array de conocimientos y creo un nuevo postulante para luego agregarlo a la lista de postulantes.
+				var conocimientosInformaticos = [$("#idChkWord").is(":checked"), 
+											 $("#idChkExcel").is(":checked"),
+											 $("#idChPowerPoint").is(":checked"),
+											 $("#idChkAccess").is(":checked"),
+											 $("#idChkEmail").is(":checked"),
+											 $("#idChkBrowsers").is(":checked")];
+											 
+				var postulante = { 
+					nombre: $("#idNombrePostulante").val(),
+					apellido : $("#idApellidoPostulante").val(),
+					tel: $("#idTelefonoPostulante").val(),
+					edad: $("#idEdadesPostulantes").val(),
+					sexo: "",
+					exp: parseInt($("#idAñosExp").val()),
+					conocimientos: conocimientosInformaticos
+				};
+				
+				if($("#rbtM").is(":checked")){
+					postulante.sexo = "M";
+				} else {
+					postulante.sexo = "F";
+				}
+				
+				arrayPostulantes.push(postulante);
+				$("#divpostulantes").hide();
+				$("#divExito").show();
+				$("#divExito h1").text("Registro de postulante realizado correctamente. Gracias!");
+				clearFormPostulante();
+			} else {
+				alert("* Seleccione los programas informáticos que conoce.");
+			}
 		} else {
-			postulante.sexo = "F";
-		} 
-		
-		$("#divpostulantes").hide();
-		$("#divExito").show();
-		$("#divExito h1").text("Registro de postulante realizado correctamente. Gracias!");
-		clearFormPostulante();
+			var postulante = { 
+					nombre: $("#idNombrePostulante").val(),
+					apellido : $("#idApellidoPostulante").val(),
+					tel: $("#idTelefonoPostulante").val(),
+					edad: $("#idEdadesPostulantes").val(),
+					sexo: "",
+					exp: parseInt($("#idAñosExp").val()),
+					conocimientos: []
+				};
+				
+			if($("#rbtM").is(":checked")){
+				postulante.sexo = "M";
+			} else {
+				postulante.sexo = "F";
+			}
+			
+			arrayPostulantes.push(postulante);
+			$("#divpostulantes").hide();
+			$("#divExito").show();
+			$("#divExito h1").text("Registro de postulante realizado correctamente. Gracias!");
+			clearFormPostulante();
+		}
 	} 
 }
 
@@ -101,6 +154,7 @@ function validarComboEdad(){
 
 function validarTelefono(){
 	var telefonoIngresado = $("#idTelefonoPostulante");
+	
 	var retorno = true;
 	
 	if (!telefonoIngresado.val()){
@@ -109,7 +163,7 @@ function validarTelefono(){
 	} else if(isNaN(telefonoIngresado.val())){
 		retorno = false;
 		alert("* Teléfono inválidos. ");
-	} else if(telefonoIngresado.length < 4 || telefonoIngresado.length > 9){
+	} else if((telefonoIngresado.val()).toString().length < 4 || (telefonoIngresado.val()).toString().length > 9){
 		retorno = false;
 		alert("* Teléfono inválidos. Largo entre 4 y 9 caracteres.");
 	} else if(arrayPostulantes.length > 0) {
@@ -208,14 +262,31 @@ function cargarArrayRangoEdades() {
 	}
 }
 
+function programasInformaticos() {
+	var rbt = $(this).attr('id');
+	
+	if(rbt == "idRbtSi"){
+		$("#idTrTiposProgramasInfo").show();
+	} else {
+		$("#idChkWord").prop("checked", false);
+		$("#idChkExcel").prop("checked", false);
+		$("#idChPowerPoint").prop("checked", false);
+		$("#idChkAccess").prop("checked", false);
+		$("#idChkEmail").prop("checked", false);
+		$("#idChkBrowsers").prop("checked", false);
+		$("#idTrTiposProgramasInfo").hide();
+	}	
+}
+
 function clearFormPostulante() {
 	$("input[type=text]").each(function() {
         $(this).val("");
     });
 	$("#idEdadesPostulantes").val("0");
 	$("#rbtM").click();
+	$("#idRbtNo").click();
 }
-/*=============================*/
+/*=======================================================================*/
 
 
 
