@@ -12,16 +12,8 @@
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/estilos.css" title="style" />
 	<script type="text/javascript" src="js/scripts.js"></script>	
-	
-		
-	
 </head>
 <body>
-
-
-
-
-
 	<div id="divPortada">
 		<p>RRHH</p>
 	</div>
@@ -88,7 +80,8 @@
 							</td>	
 							<td>									
 								<input id="idNombrePostulante" placeholder="Ingrese nombre..." maxlength="15" type="text">
-							</td>								
+								<input type="button" id="idBtnRegistrarPostulante" value="Registrar">
+							</td>
 						</tr>
 						<tr>
 							<td class="trAlignRight">
@@ -136,22 +129,43 @@
 								<input type="text" id="idAñosExp" placeholder="Ingrese años exp..." maxlength="2"><em>(Si busca su primer trabajo ingrese 0 en este campo.)</emp>
 							</td>								
 						</tr>
-						<tr>
-							<td>									
+						<tr>	
+							<td class="trAlignRight">
+								<label>¿Sabe usar programas informáticos?</label>									
 							</td>
 							<td>
-							</td>
+								<input type="radio" name="rbtProgInform" id="idRbtSi"> Si
+							</td>							
 						</tr>
 						<tr>
-							<td>									
-							</td>
+							<td></td>
 							<td>
-								<input type="button" id="idBtnRegistrarPostulante" value="Registrar">
+								<input type="radio" name="rbtProgInform" id="idRbtNo" checked="checked"> No					
 							</td>
 						</tr>
-					</table>
-				</fieldset>					
+						<tr id="idTrTiposProgramasInfo">
+							<td class="trAlignRightTop">
+								<label>Indique cual de los siguientes sabe usar:</label>
+							</td>
+							<td>
+								<input type="checkbox" id="idChkWord"> Word
+								<br/>
+								<input type="checkbox" id="idChkExcel"> Excel
+								<br/>
+								<input type="checkbox" id="idChPowerPoint"> Power Point
+								<br/>
+								<input type="checkbox" id="idChkAccess"> Access
+								<br/>
+								<input type="checkbox" id="idChkEmail"> Correo electrónico
+								<br/>
+								<input type="checkbox" id="idChkBrowsers"> Navegadores de Internet
+							</td>
+						</tr>						
+					</table>				  		
+				</fieldset>
 			</form>
+			
+			
 		</div>
 
 		<div id="divEmpresaCliente">
@@ -259,7 +273,12 @@
 	</div>
 
 	<div id="divPie">
-		<h3>Contactenos</h3>
+		<div>
+			<h3>Contactenos</h3>
+		</div>
+		<div>
+			<h3>Contactenos</h3>
+		</div>
 	</div>
 
 
