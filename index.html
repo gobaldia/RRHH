@@ -80,7 +80,7 @@
 							</td>	
 							<td>									
 								<input id="idNombrePostulante" placeholder="Ingrese nombre..." maxlength="15" type="text">
-								<input type="button" id="idBtnRegistrarPostulante" value="Registrar">
+								<input type="button" id="idBtnRegistrarPostulante" class="btnRegistrar" value="Registrar">
 							</td>
 						</tr>
 						<tr>
@@ -108,19 +108,15 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="trAlignRight">
+							<td class="trAlignRightTop">
 								<label>Sexo: </label>									
 							</td>
 							<td>
 								<input type="radio" name="rbtSexo" id="rbtM" checked="checked"> Masculino
+								<br/>
+								<input type="radio" name="rbtSexo" > Femenino
 							</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>
-								<input type="radio" name="rbtSexo" > Femenino					
-							</td>
-						</tr>								
+						</tr>												
 						<tr>	
 							<td class="trAlignRight">
 								<label>Años de Experiencia: </label>									
@@ -130,18 +126,14 @@
 							</td>								
 						</tr>
 						<tr>	
-							<td class="trAlignRight">
+							<td class="trAlignRightTop">
 								<label>¿Sabe usar programas informáticos?</label>									
 							</td>
 							<td>
 								<input type="radio" name="rbtProgInform" id="idRbtSi"> Si
+								<br/>
+								<input type="radio" name="rbtProgInform" id="idRbtNo" checked="checked"> No	
 							</td>							
-						</tr>
-						<tr>
-							<td></td>
-							<td>
-								<input type="radio" name="rbtProgInform" id="idRbtNo" checked="checked"> No					
-							</td>
 						</tr>
 						<tr id="idTrTiposProgramasInfo">
 							<td class="trAlignRightTop">
@@ -208,15 +200,16 @@
 					<legend>Datos de la Vacante</legend>
 					<table id="tbVacante">
 						<tr>
-							<td>
+							<td class="trAlignRight">
 								<label>Empresa: </label>
 							</td>
 							<td>
-								<input type="text" id="idEmpresaCliente"></input>
+								<select id="slctEmpresaCliente"></select>
+								<input type="button" id="btnRegistrarVacante" class="btnRegistrar" value="Registrar">
 							</td>
 						</tr>
 						<tr>
-							<td>
+							<td class="trAlignRight">
 								<label>Rango de edad: </label>
 							</td>
 							<td>
@@ -224,45 +217,117 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
+							<td class="trAlignRightTop">
 								<label>Sexo: </label>
 							</td>
 							<td>
-								<input type="radio" id="idSexo">Masculino</input>
+								<input type="radio" name="vacanteSexo" id="rbtVacanteI" checked="checked">Indistinto</input><br/>
+								<input type="radio" name="vacanteSexo" id="rbtVacanteM">Masculino</input><br/>
+								<input type="radio" name="vacanteSexo" id="rbtVacanteF">Femenino</input>
 							</td>
-						</tr>
+						</tr>						
 						<tr>
-							<td></td>
-							<td>
-								<input type="radio" id="idSexo">Femenino</input>
-							</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>
-								<input type="radio" id="idSexo">Indistinto</input>
-							</td>
-						</tr>
-						<tr>
-							<td>
+							<td class="trAlignRightTop">
 								<label>Experiencia Laboral: </label>
 							</td>
 							<td>
-								<input type="radio" id="idExperienciaLaboral">Obligatoria</input>
+								<input type="radio" name="vacanteExp" id="rbtExpIndistinta" checked="checked">Indistinta</input><br/>
+								<input type="radio" name="vacanteExp" id="rbtExpOblig">Obligatoria</input>
 							</td>
+						</tr>	
+						<tr>	
+							<td class="trAlignRightTop">
+								<label>¿Requiere conocimiento de informática?</label>									
+							</td>
+							<td>
+								<input type="radio" name="rbtInform" id="rbtSi"> Si
+								<br/>
+								<input type="radio" name="rbtInform" id="rbtNo" checked="checked"> No	
+							</td>							
 						</tr>
-						<tr>
-							<td></td>
-							<td>
-								<input type="radio" id="idExperienciaLaboral">Indistinta</input>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<label>Requiere conocimiento de inform&aacutetica: </label>
+						<tr id="trConocimientosInformaticos">
+							<td class="trAlignRightTop">
+								<label>Indique cuales:</label>
 							</td>
 							<td>
-								<input type="checkbox" id="idRequiereInformatica"></input>
+								<table>
+									<tr>
+										<td>
+											Excluyente
+										</td>
+										<td>
+											No Excluyente
+										</td>
+										<td>
+										</td>
+									</tr>
+									<tr>
+										<td class="alignCenter">
+											<input type="radio" name="rbtWord" id="rbtWordExcluyente"></input>
+										</td>
+										<td class="alignCenter">
+											<input type="radio" name="rbtWord" id="rbtWordNoExcluyente" checked="checked"></input>
+										</td>
+										<td>
+											Word
+										</td>
+									</tr>
+									<tr>
+										<td class="alignCenter">
+											<input type="radio" name="rbtExcel" id="rbtExcelExcluyente"></input>
+										</td>
+										<td class="alignCenter">
+											<input type="radio" name="rbtExcel" id="rbtExcelNoExcluyente" checked="checked"></input>
+										</td>
+										<td>
+											Excel
+										</td>
+									</tr>
+									<tr>
+										<td class="alignCenter">
+											<input type="radio" name="rbtPowerPoint" id="rbtPowerPointExcluyente"></input>
+										</td>
+										<td class="alignCenter">
+											<input type="radio" name="rbtPowerPoint" id="rbtPowerPointNoExcluyente" checked="checked"></input>
+										</td>
+										<td>
+											Power Point
+										</td>
+									</tr>
+									<tr>
+										<td class="alignCenter">
+											<input type="radio" name="rbtAccess" id="rbtAccessExcluyente"></input>
+										</td>
+										<td class="alignCenter">
+											<input type="radio" name="rbtAccess" id="rbtAccessNoExcluyente" checked="checked"></input>
+										</td>
+										<td>
+											Access
+										</td>
+									</tr>
+									<tr>
+										<td class="alignCenter">
+											<input type="radio" name="rbtMail" id="rbtMailExcluyente"></input>
+										</td>
+										<td class="alignCenter">
+											<input type="radio" name="rbtMail" id="rbtMailNoExcluyente" checked="checked"></input>
+										</td>
+										<td>
+											Correo electrónico
+										</td>
+									</tr>
+									<tr>
+										<td class="alignCenter">
+											<input type="radio" name="rbtBrowsers" id="rbtBrowsersExcluyente"></input>
+										</td>
+										<td class="alignCenter">
+											<input type="radio" name="rbtBrowsers" id="rbtBrowsersNoExcluyente" checked="checked"></input>
+										</td>
+										<td>
+											Navegadores de Internet
+										</td>
+									</tr>
+								</table>							
 							</td>
 						</tr>
 					</table>
