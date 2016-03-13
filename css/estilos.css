@@ -8,7 +8,6 @@ input[type="text"] {
 input[type="button"] {
 	width: 200px;
 	height: 40px;
-	margin-left:40px;
 	font-size: 125%;
 	font-family: Open Sans,Arial,sans-serif;
 }
@@ -87,7 +86,9 @@ body {
 	text-align: right;
 	vertical-align: text-top;
 }
-
+.alignCenter {
+	text-align: center;
+}
 .alignLeft {
 	text-align: left;
 }
@@ -169,6 +170,8 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
+/*============ PIE =============*/
 #divPie {    
     color:white;
     clear:both;
@@ -179,15 +182,26 @@ body {
 	background-size: 100%;
 }
 
-
-
-#divExito h1 {
-	font-size: 130%;
-	font-family: Open Sans,Arial,sans-serif;
-	margin-top: 10%;
-	margin-left: 10%;
-	color: green;	
+#divPieLeft {
+	width: 50%;
+	display: inline;
+	
 }
+#divPieRight {
+	width: 40%;
+	display: inline;
+}
+/*================================*/
+
+
+/*============== CONSULTA POSTULANTES =====================*/
+
+#divConsultaPostulantes select {
+	height: 500px;
+	width: 500px	
+}
+/*========================================================*/
+
 #idformPostulante {
 	width: 100%;
 	height: 500px;
@@ -200,9 +214,14 @@ body {
 	width: 100%;
 	height: 500px;
 }
+#divExito h1 {
+	font-size: 130%;
+	font-family: Open Sans,Arial,sans-serif;
+	margin-top: 10%;
+	margin-left: 10%;
+	color: green;	
+}
 #idBtnRegistrarPostulante {
 	position: absolute;
-	right 3%;
-	
+	margin-left: 20%
 }
-
