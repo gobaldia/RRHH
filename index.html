@@ -11,7 +11,8 @@
 
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/estilos.css" title="style" />
-	<script type="text/javascript" src="js/scripts.js"></script>	
+	<script type="text/javascript" src="js/scripts.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
 	<div id="divPortada">
@@ -19,7 +20,7 @@
 	</div>
 
 	<div id="divMenu">
-		<img src="img/menuImg.jpg" >
+		<img src="img/menuImg.jpg" alt="imagen-menu">
 		<ul>
 		   <li>
 				<a href="#" id="vista_1" value="1">
@@ -61,8 +62,12 @@
 
 	<div id="divContenido">
 		<div id="divPrincipal">
-			<h1>Página en construcción...</h1>
-			<img src="img/enConstruccion.png" alt="En contrucción" >
+			<h1>Bienvenidos a RRHH Consultoría en Recursos Humanos</h1>
+			<p>Somos una Consultora especializada en la gestión integral del Capital Humano.<br>
+				Nuestro principal objetivo es mantener lazos de confianza y credibilidad con nuestros clientes, lo que nos lleva a mantener un trato personalizado, trabajando con gran responsabilidad, apuntando siempre a la "Mejora Continua".<br>
+				Las organizaciones comprometidas con el éxito están abiertas a un constante aprendizaje.<br>
+				A través de nuestro servicio de reclutamiento, su empresa podrá reducir los costos, logrando sus objetivos.
+			</p>
 		</div>
 		
 		<div id="divExito">
@@ -80,7 +85,6 @@
 							</td>	
 							<td>									
 								<input id="idNombrePostulante" placeholder="Ingrese nombre..." maxlength="15" type="text">
-								<input type="button" id="idBtnRegistrarPostulante" class="btnRegistrar" value="Registrar">
 							</td>
 						</tr>
 						<tr>
@@ -122,7 +126,7 @@
 								<label>Años de Experiencia: </label>									
 							</td>
 							<td>
-								<input type="text" id="idAñosExp" placeholder="Ingrese años exp..." maxlength="2"><em>(Si busca su primer trabajo ingrese 0 en este campo.)</emp>
+								<input type="text" id="idAñosExp" placeholder="Ingrese años exp..." maxlength="2"><em>(Si busca su primer trabajo ingrese 0 en este campo.)</em>
 							</td>								
 						</tr>
 						<tr>	
@@ -152,7 +156,12 @@
 								<br/>
 								<input type="checkbox" id="idChkBrowsers"> Navegadores de Internet
 							</td>
-						</tr>						
+						</tr>
+						<tr>
+							<td>
+								<input type="button" id="idBtnRegistrarPostulante" class="btnRegistrar" value="Registrar">
+							</td>
+						</tr>					
 					</table>				  		
 				</fieldset>
 			</form>
@@ -170,7 +179,7 @@
 								<label>Razón Social: </label>
 							</td>
 							<td>
-								<input type="text" id="idRazonSocialEmpresaCliente"></input>
+								<input type="text" placeholder="Ingrese nombre..." id="idRazonSocialEmpresaCliente">
 							</td>
 						</tr>
 						<tr>
@@ -178,7 +187,7 @@
 								<label>Dirección: </label>
 							</td>
 							<td>
-								<input type="text" id="idDireccionEmpresaCliente"></input>
+								<input type="text" placeholder="Ingrese dirección..." id="idDireccionEmpresaCliente">
 							</td>
 						</tr>
 						<tr>
@@ -186,7 +195,12 @@
 								<label>Teléfono: </label>
 							</td>
 							<td>
-								<input type="text" id="idTelefonoEmpresaCliente"></input>
+								<input type="text" placeholder="Ingrese teléfono..." id="idTelefonoEmpresaCliente">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="button" id="idBtnRegistrarEmpresa" value="Registrar">
 							</td>
 						</tr>
 					</table>
@@ -205,7 +219,6 @@
 							</td>
 							<td>
 								<select id="slctEmpresaCliente"></select>
-								<input type="button" id="btnRegistrarVacante" class="btnRegistrar" value="Registrar">
 							</td>
 						</tr>
 						<tr>
@@ -221,9 +234,9 @@
 								<label>Sexo: </label>
 							</td>
 							<td>
-								<input type="radio" name="vacanteSexo" id="rbtVacanteI" checked="checked">Indistinto</input><br/>
-								<input type="radio" name="vacanteSexo" id="rbtVacanteM">Masculino</input><br/>
-								<input type="radio" name="vacanteSexo" id="rbtVacanteF">Femenino</input>
+								<input type="radio" name="vacanteSexo" id="rbtVacanteI" checked="checked">Indistinto<br/>
+								<input type="radio" name="vacanteSexo" id="rbtVacanteM">Masculino<br/>
+								<input type="radio" name="vacanteSexo" id="rbtVacanteF">Femenino
 							</td>
 						</tr>						
 						<tr>
@@ -231,8 +244,8 @@
 								<label>Experiencia Laboral: </label>
 							</td>
 							<td>
-								<input type="radio" name="vacanteExp" id="rbtExpIndistinta" checked="checked">Indistinta</input><br/>
-								<input type="radio" name="vacanteExp" id="rbtExpOblig">Obligatoria</input>
+								<input type="radio" name="vacanteExp" id="rbtExpIndistinta" checked="checked">Indistinta<br/>
+								<input type="radio" name="vacanteExp" id="rbtExpOblig">Obligatoria
 							</td>
 						</tr>	
 						<tr>	
@@ -263,10 +276,10 @@
 									</tr>
 									<tr>
 										<td class="alignCenter">
-											<input type="radio" name="rbtWord" id="rbtWordExcluyente"></input>
+											<input type="radio" name="rbtWord" id="rbtWordExcluyente">
 										</td>
 										<td class="alignCenter">
-											<input type="radio" name="rbtWord" id="rbtWordNoExcluyente" checked="checked"></input>
+											<input type="radio" name="rbtWord" id="rbtWordNoExcluyente" checked="checked">
 										</td>
 										<td>
 											Word
@@ -274,10 +287,10 @@
 									</tr>
 									<tr>
 										<td class="alignCenter">
-											<input type="radio" name="rbtExcel" id="rbtExcelExcluyente"></input>
+											<input type="radio" name="rbtExcel" id="rbtExcelExcluyente">
 										</td>
 										<td class="alignCenter">
-											<input type="radio" name="rbtExcel" id="rbtExcelNoExcluyente" checked="checked"></input>
+											<input type="radio" name="rbtExcel" id="rbtExcelNoExcluyente" checked="checked">
 										</td>
 										<td>
 											Excel
@@ -285,10 +298,10 @@
 									</tr>
 									<tr>
 										<td class="alignCenter">
-											<input type="radio" name="rbtPowerPoint" id="rbtPowerPointExcluyente"></input>
+											<input type="radio" name="rbtPowerPoint" id="rbtPowerPointExcluyente">
 										</td>
 										<td class="alignCenter">
-											<input type="radio" name="rbtPowerPoint" id="rbtPowerPointNoExcluyente" checked="checked"></input>
+											<input type="radio" name="rbtPowerPoint" id="rbtPowerPointNoExcluyente" checked="checked">
 										</td>
 										<td>
 											Power Point
@@ -296,10 +309,10 @@
 									</tr>
 									<tr>
 										<td class="alignCenter">
-											<input type="radio" name="rbtAccess" id="rbtAccessExcluyente"></input>
+											<input type="radio" name="rbtAccess" id="rbtAccessExcluyente">
 										</td>
 										<td class="alignCenter">
-											<input type="radio" name="rbtAccess" id="rbtAccessNoExcluyente" checked="checked"></input>
+											<input type="radio" name="rbtAccess" id="rbtAccessNoExcluyente" checked="checked">
 										</td>
 										<td>
 											Access
@@ -307,10 +320,10 @@
 									</tr>
 									<tr>
 										<td class="alignCenter">
-											<input type="radio" name="rbtMail" id="rbtMailExcluyente"></input>
+											<input type="radio" name="rbtMail" id="rbtMailExcluyente">
 										</td>
 										<td class="alignCenter">
-											<input type="radio" name="rbtMail" id="rbtMailNoExcluyente" checked="checked"></input>
+											<input type="radio" name="rbtMail" id="rbtMailNoExcluyente" checked="checked">
 										</td>
 										<td>
 											Correo electrónico
@@ -318,16 +331,21 @@
 									</tr>
 									<tr>
 										<td class="alignCenter">
-											<input type="radio" name="rbtBrowsers" id="rbtBrowsersExcluyente"></input>
+											<input type="radio" name="rbtBrowsers" id="rbtBrowsersExcluyente">
 										</td>
 										<td class="alignCenter">
-											<input type="radio" name="rbtBrowsers" id="rbtBrowsersNoExcluyente" checked="checked"></input>
+											<input type="radio" name="rbtBrowsers" id="rbtBrowsersNoExcluyente" checked="checked">
 										</td>
 										<td>
 											Navegadores de Internet
 										</td>
 									</tr>
 								</table>							
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="button" id="btnRegistrarVacante" class="btnRegistrar" value="Registrar">
 							</td>
 						</tr>
 					</table>
@@ -367,11 +385,45 @@
 				</fieldset>
 			</form>
 		</div>
+		
+		<div id="divPostulantesNoCumplenRequisitos">
+			<form action="#" method="post">
+				<fieldset>
+					<legend>Postulantes que no cumplen los requisitos para ninguna oferta:</legend>
+						<table id="tbPostulantesNoCumplenRequisitos">
+							<tr>
+								<td>
+									<select id="selectPostulantesNoCumplenRequisitos" size="1" multiple></select>
+								</td>
+							</tr>
+						</table>
+				</fieldset>
+			</form>
+		</div>
+		
+		<div id="divRequerimientosMasPedidos">		
+			<form action="#" method="post">
+				<fieldset>
+					<legend>Requerimientos más Pedidos</legend>
+					<h3> Los requerimientos más solicitados son los siguientes:</h3>
+					
+					<blockquote>
+						
+					</blockquote>
+					
+				</fieldset>
+			</form>
+		</div>
 	</div>
 
 	<div id="divPie">
 		<div id="divPieLeft">
-			<h3>Contactenos</h3>
+			<h3>Contáctenos</h3>
+			<a href="http://facebook.com/rrhh"><i class="fa fa-facebook fa-2x"></i></a>
+			<a href="http://linkedin.com/rrhh"><i class="fa fa-linkedin fa-2x"></i></a>
+			<a href="http://twitter.com/rrhh"><i class="fa fa-twitter fa-2x"></i></a>
+			<a href="http://plus.google.com/rhhh"><i class="fa fa-google-plus fa-2x"></i> </a>
+			<a href="mailto:contact@rrhh.com.uy"><i class="fa fa-envelope fa-2x"></i> </a>
 		</div>
 		<div id="divPieRight">
 			<table>
@@ -394,36 +446,5 @@
 			</table>
 		</div>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-	
 	</body>
 </html>
