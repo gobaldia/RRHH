@@ -18,7 +18,7 @@ em {
 }
 label {
 	font-family: Open Sans,Arial,sans-serif;
-	font-size: 110%;
+	font-size: 100%;
 }
 select {
 	width: 350px;
@@ -44,16 +44,39 @@ legend {
 	font-size:125%;
 	
 }
-fieldset {	
+
+#divEmpresaCliente fieldset {	
 	font-family: Open Sans,Arial,sans-serif;
-	height: 710px;
-	width: 108%;
+/*	height: 710px;
+	width: 108%;*/
+	height: 250px;
+	width: 100%;
 }
+
+#divPostulantes fieldset {	
+	font-family: Open Sans,Arial,sans-serif;
+/*	height: 710px;
+	width: 108%;*/
+	height: 650px;
+	width: 100%;
+}
+
+#divVacante fieldset {	
+	font-family: Open Sans,Arial,sans-serif;
+/*	height: 710px;
+	width: 108%;*/
+	height: 700px;
+	width: 100%;
+}
+
 q {
 	font-family: Open Sans,Arial,sans-serif;
 	color: Red;
 }
 h3 {
+	font-family: Open Sans,Arial,sans-serif;	
+}
+h2 {
 	font-family: Open Sans,Arial,sans-serif;	
 }
 button {
@@ -110,7 +133,7 @@ body {
 	padding-left: 80%;
 	float: left;
 	color: white;
-	font-size: 400%;	
+	font-size: 300%;	
 	
 	text-shadow: 2px 4px 3px rgba(0,0,0,0.3);	
 }
@@ -149,7 +172,7 @@ body {
 	height: 90px;
 }
 #divMenu a:hover {
-	font-size: 125%;
+	font-size: 100%;
 }
 #divMenu span {
 	padding-top: 3%;
@@ -165,9 +188,16 @@ body {
     padding-top:20px;
 	padding-bottom:30px;
 	padding-left:30px;
+	height: 700px;
 }
 #divPrincipal h1 {
 	text-align: center;
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+#divPrincipal p {
+	text-align: justify;	
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+
 }
 #divPrincipal img {
 	display: block;
@@ -202,7 +232,16 @@ body {
 
 #divConsultaPostulantes select {
 	height: 500px;
-	width: 500px	
+	width: 500px
+}
+/*========================================================*/
+
+
+/*========== POSTULANTES NO CUMPLEN REQUISITOS ===========*/
+
+#divPostulantesNoCumplenRequisitos select {
+	height: 500px;
+	width: 500px
 }
 /*========================================================*/
 
@@ -225,3 +264,10 @@ body {
 	margin-left: 10%;
 	color: green;	
 }
+#divRequerimientosMasPedidos h3 {
+	padding-left: 5%;
+}
+#divRequerimientosMasPedidos blockquote {
+	padding-left: 7%;
+}
+
