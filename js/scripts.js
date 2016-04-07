@@ -9,6 +9,8 @@ function inicio(){
 	$("#divConsultaPostulantes").hide();
 	$("#idTrTiposProgramasInfo").hide();
 	$("#trConocimientosInformaticos").hide();
+	$("#divRequerimientosMasPedidos").hide();
+	$("#divPostulantesNoCumplenRequisitos").hide();
 	
 	$("#idBtnRegistrarPostulante").click(registrarPostulante);
 	$("#divMenu ul li a").click(cambiarForm);
@@ -16,6 +18,7 @@ function inicio(){
 	$("#idRbtNo").click(programasInformaticos);
 	$("#btnConsultarPosiblesPostulantes").click(consultarVacantePostulante);
 	$("#btnRegistrarVacante").click(registrarVacante);
+	$("#idBtnRegistrarEmpresa").click(registrarEmpresa);
 	
 	$("#rbtSi").click(vacanteMostrarProgramasInformaticos);
 	$("#rbtNo").click(vacanteMostrarProgramasInformaticos);
@@ -28,54 +31,7 @@ function inicio(){
 var arrayPostulantes = []; 
 var listaEmpresas = [];
 var listaVacantes = [];
-
 /*============================*/
-
-
-/*---------------DATOS DE PRUEBA--------------*/
-
-
-
-var unaEmpresa1 = {
-	razonSocial: 1234,
-	direccion: "DirecionABCCD",
-	telefono: 98765432
-}
-var unaEmpresa2 = {
-	razonSocial: 321654,
-	direccion: "DirecionBFRS",
-	telefono: 33354458
-}
-listaEmpresas.push(unaEmpresa1);
-listaEmpresas.push(unaEmpresa2);
-
-var unaVacante1 = {
-	empresa: unaEmpresa1,
-	rangoEdad: "18-35",
-	sexo: "I",
-	exp: "I",
-	conocimientosInformaticos: [true, false, true, false, false, true]
-}
-var unaVacante2 = {
-	empresa: unaEmpresa1,
-	rangoEdad: "30-40",
-	sexo: "M",
-	exp: "I",
-	conocimientosInformaticos: [false, false, false, false, false, false]
-}
-var unaVacante3 = {
-	empresa: unaEmpresa2,
-	rangoEdad: "50-70",
-	sexo: "I",
-	exp: "O",
-	conocimientosInformaticos: []
-}
-listaVacantes.push(unaVacante1);
-listaVacantes.push(unaVacante2);
-listaVacantes.push(unaVacante3);
-
-/*------------------------------------*/
-
 
 
 
@@ -88,12 +44,15 @@ function cambiarForm(){
 	$("#slctVacantes").empty();
 	$("#slctPostulantes").empty();
 	$("#slctEmpresaCliente").empty();
+	$("#divRequerimientosMasPedidos blockquote").empty();
 	
 	$("#divPrincipal").hide();
 	$("#divPostulantes").hide();
 	$("#divEmpresaCliente").hide();
 	$("#divVacante").hide();
 	$("#divConsultaPostulantes").hide();
+	$("#divRequerimientosMasPedidos").hide();
+	$("#divPostulantesNoCumplenRequisitos").hide();
 	
 	switch(vista){
 		case "vista_1":
@@ -111,7 +70,14 @@ function cambiarForm(){
 		case "vista_5":
 			ingresarConsultaPosiblesPostulantes();			
 			break;
-		case "vista_6":			
+		case "vista_6":	
+			calcularRequerimientosMasPedidos();
+			$("#divRequerimientosMasPedidos").show();
+			break;
+		case "vista_7":
+			postulantesNoCalifican();
+//			cargarPostulantesNoCalifican();
+			$("#divPostulantesNoCumplenRequisitos").show();	
 			break;
 		default:
 			break;
@@ -148,11 +114,75 @@ function ingresarConsultaPosiblesPostulantes() {
 /*==============================================*/
 
 
+
+
+
+/*===================== REGISTRO EMPRESA =========================*/
+function validarDatosEmpresa () {
+	
+	var retorno = true;
+	var vacio = "";
+
+	var razonSocial = $('#idRazonSocialEmpresaCliente').val();
+	var direccion = $('#idDireccionEmpresaCliente').val();
+
+	if (razonSocial == null || direccion == null) {
+		retorno = false;
+		alert("Debe completar todos los campos.")
+	}
+
+	return retorno;	
+}
+
+function yaExisteEmpresa () {
+	var retorno = false;
+
+	if(listaEmpresas.length > 0){
+		for (var i = 0; i < listaEmpresas.length; i++) {
+			var empresa = listaEmpresas[i];
+			if (empresa["razonSocial"] == $('#idRazonSocialEmpresaCliente').val()) {
+				retorno = true;
+				alert("La empresa ya se encuentra registrada.")
+			}
+		}
+	}
+	
+	return retorno;
+}
+function registrarEmpresa() {
+	var miRazonSocial = $('#idRazonSocialEmpresaCliente').val();
+	var miDireccion = $('#idDireccionEmpresaCliente').val();
+	var miTelefono = $('#idTelefonoEmpresaCliente').val();
+
+	if (!yaExisteEmpresa() && validarDatosEmpresa() && validarTelefonoEmpresa()) {
+		var empresa = {razonSocial: miRazonSocial, direccion: miDireccion, telefono: miTelefono};
+
+		listaEmpresas.push(empresa);
+		
+		$("#divEmpresaCliente").hide();
+		$("#divExito").show();
+		$("#divExito h1").text("Registro de empresa realizado correctamente. Gracias!");
+		clearFormEmpresa();
+	}
+}
+
+function clearFormEmpresa() {
+	$("#idRazonSocialEmpresaCliente").val("");
+	$("#idDireccionEmpresaCliente").val("");
+	$("#idTelefonoEmpresaCliente").val("");
+}
+
+/*==============================================*/
+
+
+
+
+
 /*=================== REGISTRO POSTULANTE ===================*/
 function registrarPostulante(){	
 
 	//Valido que el usuario allá completado nombre, apellido, teléfono, edad y añosExp correctos, sino no lo dejo seguir.
-	if(validarNombreyApellido() && validarTelefono() && validarComboEdad() && validarAñosExp()){
+	if(validarNombreyApellido() && validarTelefonoPostulante() && validarComboEdad() && validarAñosExp()){
 		
 		//Si tiene conocimientos informáticos, voy a desplegar los tipos de programas y validar que seleccione al menos 1.
 		if($("#idRbtSi").is(":checked")){
@@ -232,8 +262,35 @@ function validarComboEdad(){
 	return retorno;
 }
 
-function validarTelefono(){
+function validarTelefonoPostulante(){
 	var telefonoIngresado = $("#idTelefonoPostulante");
+	
+	var retorno = true;
+	
+	if (!telefonoIngresado.val()){
+		retorno = false;
+		alert("* Debe ingresar un teléfono. ");	
+	} else if(isNaN(telefonoIngresado.val())){
+		retorno = false;
+		alert("* Teléfono inválido. ");
+	} else if((telefonoIngresado.val()).toString().length < 4 || (telefonoIngresado.val()).toString().length > 9){
+		retorno = false;
+		alert("* Teléfono inválidos. Largo entre 4 y 9 caracteres.");
+	} else if(arrayPostulantes.length > 0) {
+		
+		for(var i = 0; i < arrayPostulantes.length; i++){
+			if(arrayPostulantes[i].tel == $(telefonoIngresado).val()){
+				alert("* Ya existe un postulante con el mismo número de teléfono. ");
+				return false;
+			}
+		}
+	} 
+	
+	return retorno;
+}
+
+function validarTelefonoEmpresa(){
+	var telefonoIngresado = $("#idTelefonoEmpresaCliente");
 	
 	var retorno = true;
 	
@@ -245,12 +302,12 @@ function validarTelefono(){
 		alert("* Teléfono inválidos. ");
 	} else if((telefonoIngresado.val()).toString().length < 4 || (telefonoIngresado.val()).toString().length > 9){
 		retorno = false;
-		alert("* Teléfono inválidos. Largo entre 4 y 9 caracteres.");
-	} else if(arrayPostulantes.length > 0) {
+		alert("* Teléfono inválido. Largo entre 4 y 9 caracteres.");
+	} else if(listaEmpresas.length > 0) {
 		
-		for(var i = 0; i < arrayPostulantes.length; i++){
-			if(arrayPostulantes[i].tel == $(telefonoIngresado).val()){
-				alert("* Ya existe postulante con el mismo número de teléfono. ");
+		for(var i = 0; i < listaEmpresas.length; i++){
+			if(listaEmpresas[i].telefono == $(telefonoIngresado).val()){
+				alert("* Ya existe una empresa con el mismo número de teléfono. ");
 				return false;
 			}
 		}
@@ -581,3 +638,122 @@ function cargarVacantes() {
 
 
 
+/*===================== REQUERIMIENTOS MAS PEDIDOS ==================*/
+function calcularRequerimientosMasPedidos() {
+	
+	if(listaVacantes.length > 0){
+		
+		$("#divRequerimientosMasPedidos h3").text("Los requerimientos mas solicitados son los siguientes: ");
+		var conocimientosMasSolicitados = [0, 0, 0, 0, 0, 0];
+		for(var i = 0; i < listaVacantes.length; i++){
+			for(var j = 0; j < listaVacantes[i]["conocimientosInformaticos"].length; j++){
+				
+				if(listaVacantes[i]["conocimientosInformaticos"][j]){
+					conocimientosMasSolicitados[j] += 3;
+				} else {
+					conocimientosMasSolicitados[j] += 1;
+				}
+			}
+		}
+		
+		for(var i = 0; i < conocimientosMasSolicitados.length; i++){
+			var h2Element = document.createElement("h2");
+			switch(i){
+				case 0:
+					h2Element.innerHTML = "Word - " + conocimientosMasSolicitados[i] + " puntos.";
+					break;
+				case 1:
+					h2Element.innerHTML = "Excel - " + conocimientosMasSolicitados[i] + " puntos.";
+					break;
+				case 2:
+					h2Element.innerHTML = "Power Point - " + conocimientosMasSolicitados[i] + " puntos.";
+					break;
+				case 3:
+					h2Element.innerHTML = "Access - " + conocimientosMasSolicitados[i] + " puntos.";
+					break;
+				case 4:
+					h2Element.innerHTML = "Correo electrónico - " + conocimientosMasSolicitados[i] + " puntos.";
+					break;
+				case 5:
+					h2Element.innerHTML = "Navegadores de Internet - " + conocimientosMasSolicitados[i] + " puntos.";
+					break;
+			}
+
+			$(h2Element).css("fontFamily", "Open Sans,Arial,sans-serif")
+			$("#divRequerimientosMasPedidos blockquote").append(h2Element);
+		}		
+	} else {
+		$("#divRequerimientosMasPedidos h3").text("No existen registros de vacantes para obtener estadísticas sobre los requerimientos mas pedidos.");
+	}
+}
+/*=====================================================================*/
+
+
+
+
+/*========================== POSTULANTES NO CALIFICAN ================================*/
+function postulantesNoCalifican() {
+	var listaPostulantesNoCalifican = [];
+	var cumpleTodo = true;
+	var comboPostulantesNoCalifican = $("#selectPostulantesNoCumplenRequisitos");
+	var bandera = false;
+	var banderaConocimiento = true;
+	$(comboPostulantesNoCalifican).empty();	
+	if (arrayPostulantes.length > 0 && listaVacantes.length > 0) {
+		for (var i = 0; i < arrayPostulantes.length; i++) {
+			var postulante = arrayPostulantes[i];
+			var edadPostulante = postulante["edad"];
+			var sexoPostulante = postulante["sexo"];
+			var expPostulante = postulante["exp"];
+			var conocimientosInformaticosPostulante = postulante["conocimientos"];
+
+			for (var j = 0; j < listaVacantes.length; j++) {
+				banderaConocimiento = true;
+				var vacante = listaVacantes[j];
+				var rangoEdadVacante = vacante["rangoEdad"];
+				var sexoVacante = vacante["sexo"];
+				var expVacante = vacante["exp"];
+				var conocimientosInformaticosVacante = vacante["conocimientosInformaticos"];
+
+				//Guardamos los valores true de los conocimientos de la vacante para luego verificar que el postulante cumpla los mismos.
+				var conocimientosRequeridos = [];
+				for(var k = 0; k < conocimientosInformaticosVacante.length; k++){
+					if(conocimientosInformaticosVacante[k]){
+						conocimientosRequeridos.push(k);
+					}
+				}
+				for(var h = 0; h < conocimientosRequeridos.length; h++){
+					if(!conocimientosInformaticosPostulante[conocimientosRequeridos[h]]){
+						banderaConocimiento = false;
+					}
+				}
+				//----------
+
+				//Verifico que el postulante NO cumpla otra vacante previamente iterada, que cumpla los conocimientos informaticos y los demas atributos.
+				if(!bandera && !banderaConocimiento || !(edadPostulante >= parseInt(rangoEdadVacante.split("-")[0]) && edadPostulante <= parseInt(rangoEdadVacante.split("-")[1]) && (sexoVacante == "I" || sexoPostulante == sexoVacante) && (expVacante == "I" || expPostulante > 0))){
+					cumpleTodo = false;
+				} else {			
+					bandera = true;
+					cumpleTodo = true;
+				}
+			}
+
+			//Si no existe vacante para el postulante iterado, lo agrego a la lista.
+			if (!cumpleTodo && !bandera) {
+					listaPostulantesNoCalifican.push(postulante);
+			}
+
+			bandera = false;
+		}
+	}
+
+	for(var i=0; i < listaPostulantesNoCalifican.length; i++){
+		var options = document.createElement("option");
+		
+		options.value = listaPostulantesNoCalifican[i]; 
+		options.text = (i+1) + ". " + listaPostulantesNoCalifican[i]["nombre"] + " " + listaPostulantesNoCalifican[i]["apellido"];
+		$(options).css("fontSize", "15px");
+		comboPostulantesNoCalifican.append(options);
+	}	
+}
+/*=====================================================================*/
